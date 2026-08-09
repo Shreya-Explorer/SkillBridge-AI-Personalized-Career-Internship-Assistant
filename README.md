@@ -22,33 +22,18 @@ SkillBridge AI analyzes student inputs and provides:
 
 ## Tech Stack
 
-* **Frontend:** HTML, CSS, JavaScript
-* **Backend:** Python Flask
-* **Styling:** Custom CSS (responsive design)
+* Frontend: HTML, CSS
+* Backend: Python Flask
+* PDF Generation: ReportLab
 
 ## Features
 
 * Responsive UI
-* Degree-specific recommendations (BCA, BTech, BCom, MBA, Nursing)
+* Degree-specific recommendations
 * Goal-based roadmap generation
 * Dynamic internship readiness score
 * Professional dashboard interface
-* Download / Print report support
-
-## Project Structure
-
-```text
-skillbridge-ai/
-│
-├── app.py
-├── requirements.txt
-├── templates/
-│   ├── index.html
-│   └── result.html
-├── static/
-│   └── style.css
-└── README.md
-```
+* Downloadable PDF report
 
 ## Installation
 
@@ -57,20 +42,19 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Open `http://127.0.0.1:5000` in your browser.
+Open `http://127.0.0.1:5000`.
 
 ## Future Enhancements
 
-* AI integration with Gemini/OpenAI
+* Real AI integration
 * Resume upload and scoring
-* Real internship listings
-* PDF report generation
-* User accounts and progress tracking
-* Multilingual support
-* Support for all academic courses and career paths
+* Internship APIs
+* User accounts
+* Cloud database
+* Support for all academic courses
 
 ## Developed For
 
-**Hack Devengers 1.0 - Open Innovation Hackathon (2026)**
+Hack Devengers 1.0 - Open Innovation Hackathon (2026)
 
 Built by **Shreya Raykar**.

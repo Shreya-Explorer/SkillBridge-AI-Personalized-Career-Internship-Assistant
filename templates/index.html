@@ -1,36 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>SkillBridge AI — Personalized Career & Internship Assistant</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillBridge AI</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
 <div class="container">
 
-    <h1>SkillBridge AI</h1>
+    <h1>🚀 SkillBridge AI</h1>
+
     <p>
-        AI-powered career roadmap, internship guidance, and skill analysis for students.
-        Get personalized recommendations in seconds.
+        Get a personalized career roadmap, internship readiness score,
+        skill-gap analysis, and project recommendations tailored to your
+        academic profile and career goals.
     </p>
+
+    <div style="text-align:center;margin:20px 0;">
+        <span style="background:rgba(255,255,255,0.15);padding:10px 18px;border-radius:30px;color:white;font-weight:bold;">
+            🎓 Supports BCA • BTech • BCom • MBA • Nursing
+        </span>
+    </div>
+
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px;margin-bottom:25px;">
 
-  <div style="background:rgba(255,255,255,0.12);padding:18px;border-radius:16px;text-align:center;">
-    <h3>Career Roadmap</h3>
-    <p>Personalized growth plan</p>
-  </div>
+        <div style="background:rgba(255,255,255,0.12);padding:18px;border-radius:16px;text-align:center;color:white;">
+            <h3>Career Roadmap</h3>
+            <p>Personalized growth plan</p>
+        </div>
 
-  <div style="background:rgba(255,255,255,0.12);padding:18px;border-radius:16px;text-align:center;">
-    <h3>Skill Analysis</h3>
-    <p>Identify missing skills</p>
-  </div>
+        <div style="background:rgba(255,255,255,0.12);padding:18px;border-radius:16px;text-align:center;color:white;">
+            <h3>Skill Analysis</h3>
+            <p>Identify missing skills</p>
+        </div>
 
-  <div style="background:rgba(255,255,255,0.12);padding:18px;border-radius:16px;text-align:center;">
-    <h3>Internship Tips</h3>
-    <p>Become job-ready faster</p>
-  </div>
+        <div style="background:rgba(255,255,255,0.12);padding:18px;border-radius:16px;text-align:center;color:white;">
+            <h3>Internship Tips</h3>
+            <p>Become job-ready faster</p>
+        </div>
 
-</div>
+    </div>
+
+    <div class="section" style="margin-top:20px;">
+        <h3>About SkillBridge AI</h3>
+        <p>
+            SkillBridge AI helps students make smarter career decisions by analyzing their
+            academic background, current skills, and career goals. It provides a personalized
+            roadmap, internship recommendations, portfolio project ideas, and a structured
+            learning plan to improve employability.
+        </p>
+    </div>
+
     <form action="/analyze" method="POST">
 
         <input type="text" name="name" placeholder="Your Name" required>
@@ -39,13 +61,17 @@
 
         <input type="text" name="semester" placeholder="Semester" required>
 
-        <textarea name="skills" placeholder="Your Current Skills" required></textarea>
+        <textarea name="skills" placeholder="Your Current Skills (e.g. Python, HTML, CSS, GitHub)" required></textarea>
 
         <textarea name="goal" placeholder="Career Goal (e.g. GenAI Engineer)" required></textarea>
 
-        <button type="submit">Generate AI Roadmap</button>
+        <button type="submit">Analyze My Career Profile</button>
 
     </form>
+
+    <footer style="text-align:center;margin-top:30px;color:white;opacity:0.8;">
+        <p>Built with ❤️ by Shreya Raykar for Hack Devengers 1.0</p>
+    </footer>
 
 </div>
 

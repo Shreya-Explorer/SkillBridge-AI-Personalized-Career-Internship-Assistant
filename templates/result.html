@@ -90,7 +90,7 @@
         </div>
 
         <div class="card" style="background:#2563eb;">
-            <h2>3</h2>
+            <h2>{{ projects|length }}</h2>
             <p>Recommended Projects</p>
         </div>
 
@@ -102,65 +102,98 @@
     </div>
 
     <div class="section">
-    <h3>🎯 Career Goal</h3>
-    <p>Based on your <span class="highlight">{{ degree }}</span> profile (Semester <span class="highlight">{{ semester }}</span>), you are building toward a career in <span class="highlight">{{ goal }}</span>.</p>
-</div>
-
-    <<div class="section">
-    <h3>💪 Your Current Strengths</h3>
-    <ul>
-        {% for item in strengths %}
-            <li>{{ item }}</li>
-        {% endfor %}
-    </ul>
-</div>
+        <h3>🤖 AI Career Insight</h3>
+        <p>{{ summary }}</p>
+    </div>
 
     <div class="section">
-    <h3>📚 Skills You Should Learn Next</h3>
-    <ul>
-        {% for item in next_skills %}
-            <li>{{ item }}</li>
-        {% endfor %}
-    </ul>
-</div>
+        <h3>🎯 Career Goal</h3>
+        <p>
+            Based on your <span class="highlight">{{ degree }}</span> profile
+            (Semester <span class="highlight">{{ semester }}</span>),
+            you are building toward a career in
+            <span class="highlight">{{ goal }}</span>.
+        </p>
+    </div>
 
     <div class="section">
-    <h3>💼 Portfolio Project Ideas</h3>
-    <ul>
-        {% for item in projects %}
-            <li>{{ item }}</li>
-        {% endfor %}
-    </ul>
-</div>
+        <h3>💪 Your Current Strengths</h3>
+        <ul>
+            {% for item in strengths %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 
     <div class="section">
-    <h3>🎯 Recommended Internship Roles</h3>
-    <ul>
-        {% for item in internships %}
-            <li>{{ item }}</li>
-        {% endfor %}
-    </ul>
-</div>
+        <h3>📚 Skills You Should Learn Next</h3>
+        <ul>
+            {% for item in next_skills %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 
     <div class="section">
-    <h3>📅 30-Day Learning Plan</h3>
-    <ul>
-        {% for item in learning_plan %}
-            <li>{{ item }}</li>
-        {% endfor %}
-    </ul>
-</div>
+        <h3>💼 Portfolio Project Ideas</h3>
+        <ul>
+            {% for item in projects %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>🎯 Recommended Internship Roles</h3>
+        <ul>
+            {% for item in internships %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>📅 30-Day Learning Plan</h3>
+        <ul>
+            {% for item in learning_plan %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
     <div class="section">
         <h3>📝 Resume Improvement Tip</h3>
-        <p>Add measurable achievements, GitHub repository links, project screenshots, and technologies used in each project.</p>
+        <p>
+            Add measurable achievements, GitHub repository links, project screenshots,
+            and technologies used in each project.
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>🚀 Future Enhancements</h3>
+        <ul>
+            <li>Support for all academic courses and career paths</li>
+            <li>Real AI integration with Gemini/OpenAI</li>
+            <li>Resume upload and AI-based scoring</li>
+            <li>Real internship listings from companies</li>
+            <li>Progress tracking dashboard</li>
+            <li>Multilingual support (English, Hindi, Kannada)</li>
+        </ul>
     </div>
 
     <div class="button-area">
         <a href="/" style="flex:1;">
             <button>Generate Another Roadmap</button>
         </a>
-        <button onclick="window.print()">Download / Print Report</button>
+
+        <a href="/download-report" style="flex:1;">
+            <button>Download Career Report (PDF)</button>
+        </a>
     </div>
+
+    <footer style="text-align:center;margin-top:30px;color:white;opacity:0.8;">
+        <p>Built with ❤️ by Shreya Raykar for Hack Devengers 1.0</p>
+    </footer>
 
 </div>
 

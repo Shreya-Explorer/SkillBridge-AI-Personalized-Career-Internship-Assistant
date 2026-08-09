@@ -1,4 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, make_response
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.platypus import SimpleDocTemplate, Paragraph
+from io import BytesIO
 
 app = Flask(__name__)
 
@@ -14,9 +17,7 @@ def analyze():
     skills = request.form['skills'].lower()
     goal = request.form['goal'].lower()
 
-    # -----------------------------
     # Internship Readiness Score
-    # -----------------------------
     score = 40
 
     if 'python' in skills:
@@ -40,9 +41,7 @@ def analyze():
 
     score = min(score, 95)
 
-    # -----------------------------
     # Strengths
-    # -----------------------------
     strengths = []
 
     if 'python' in skills:
@@ -65,9 +64,6 @@ def analyze():
     if not strengths:
         strengths.append('Strong learning potential and beginner-friendly growth path')
 
-    # -----------------------------
-    # Degree-Based Recommendations
-    # -----------------------------
     degree_lower = degree.lower()
 
     if 'bca' in degree_lower:
@@ -202,9 +198,6 @@ def analyze():
             'Support Executive Intern'
         ]
 
-    # -----------------------------
-    # Goal-Specific Enhancement
-    # -----------------------------
     goal_display = goal.title()
 
     if 'genai' in goal or 'ai' in goal:
@@ -231,20 +224,26 @@ def analyze():
 
         internships.append('Full Stack Developer Intern')
 
-    # Remove duplicates
     next_skills = list(dict.fromkeys(next_skills))
     projects = list(dict.fromkeys(projects))
     internships = list(dict.fromkeys(internships))
 
-    # -----------------------------
-    # 30-Day Learning Plan
-    # -----------------------------
     learning_plan = [
         'Week 1: Strengthen your core programming and Git skills',
         'Week 2: Build a web application using Flask',
         'Week 3: Create one portfolio project related to your career goal',
         'Week 4: Improve your resume and apply to at least 20 internships'
     ]
+
+    summary = f'''
+    Based on your {degree} profile and current skills ({skills}),
+    SkillBridge AI believes that you have strong potential to become a {goal_display}.
+    Your internship readiness score is {score}%, which means you are on the right
+    track but should focus on strengthening practical projects, APIs, and portfolio
+    development. Completing the recommended projects and following the 30-day
+    learning plan can significantly improve your chances of securing internships
+    and entry-level opportunities.
+    '''
 
     return render_template(
         'result.html',
@@ -257,8 +256,36 @@ def analyze():
         next_skills=next_skills,
         projects=projects,
         internships=internships,
-        learning_plan=learning_plan
+        learning_plan=learning_plan,
+        summary=summary
     )
+
+@app.route('/download-report')
+def download_report():
+    buffer = BytesIO()
+    doc = SimpleDocTemplate(buffer)
+    styles = getSampleStyleSheet()
+    story = []
+
+    story.append(Paragraph('SkillBridge AI - Personalized Career Roadmap Report', styles['Title']))
+    story.append(Paragraph('This report was generated using the SkillBridge AI career analysis system.', styles['Normal']))
+    story.append(Paragraph('<br/>', styles['Normal']))
+
+    story.append(Paragraph('<b>Key Recommendations:</b>', styles['Heading2']))
+    story.append(Paragraph('- Strengthen Python and Git fundamentals', styles['Normal']))
+    story.append(Paragraph('- Build Flask and API-based projects', styles['Normal']))
+    story.append(Paragraph('- Create a portfolio and apply for internships regularly', styles['Normal']))
+    story.append(Paragraph('- Continue improving technical and communication skills', styles['Normal']))
+
+    doc.build(story)
+    pdf = buffer.getvalue()
+    buffer.close()
+
+    response = make_response(pdf)
+    response.headers['Content-Type'] = 'application/pdf'
+    response.headers['Content-Disposition'] = 'attachment; filename=SkillBridge_Career_Report.pdf'
+
+    return response
 
 if __name__ == '__main__':
     app.run(debug=True)
