@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SkillBridge AI — Personalized Career & Internship Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>SkillBridge AI</h1>
+    <p>
+        AI-powered career roadmap, internship guidance, and skill analysis for students.
+        Get personalized recommendations in seconds.
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px;margin-bottom:25px;">
+
+  <div style="background:rgba(255,255,255,0.12);padding:18px;border-radius:16px;text-align:center;">
+    <h3>Career Roadmap</h3>
+    <p>Personalized growth plan</p>
+  </div>
+
+  <div style="background:rgba(255,255,255,0.12);padding:18px;border-radius:16px;text-align:center;">
+    <h3>Skill Analysis</h3>
+    <p>Identify missing skills</p>
+  </div>
+
+  <div style="background:rgba(255,255,255,0.12);padding:18px;border-radius:16px;text-align:center;">
+    <h3>Internship Tips</h3>
+    <p>Become job-ready faster</p>
+  </div>
+
+</div>
+    <form action="/analyze" method="POST">
+
+        <input type="text" name="name" placeholder="Your Name" required>
+
+        <input type="text" name="degree" placeholder="Degree (e.g. BCA)" required>
+
+        <input type="text" name="semester" placeholder="Semester" required>
+
+        <textarea name="skills" placeholder="Your Current Skills" required></textarea>
+
+        <textarea name="goal" placeholder="Career Goal (e.g. GenAI Engineer)" required></textarea>
+
+        <button type="submit">Generate AI Roadmap</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
